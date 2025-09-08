@@ -1,0 +1,30 @@
+﻿<Window x:Class="CryptoMonitor.AppPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CryptoMonitor"
+        mc:Ignorable="d"
+        Title="BTC monitor" Height="120" Width="180" Loaded="Window_Loaded" ResizeMode="NoResize" Topmost="True" Cursor="ScrollS" MouseUp="Window_MouseUp" WindowStyle="None" Background="{x:Null}" AllowsTransparency="True" >
+    <Border CornerRadius="15" Background="#404040">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="0" Grid.Column="0" Source="Image/logo.png" Height="24" Width="24" Margin="10 5 5 5" />
+            <Label Grid.Row="0" Grid.Column="1" x:Name="lblPrice" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="20" />
+            <Button Grid.Row="0" Grid.Column="2" Click="Close_Click" Background="Transparent" Cursor="Hand" BorderThickness="0" ToolTip="Ukončit" Margin="5 5 10 5">
+                <Image  Source="Image/close.png" Height="24" Width="24"  />
+            </Button>
+
+            <Image Grid.Row="1" Grid.ColumnSpan="3" x:Name="imgChart" Margin="10" Stretch="UniformToFill"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Grid>
+    </Border>
+</Window>
