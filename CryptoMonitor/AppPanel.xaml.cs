@@ -22,8 +22,8 @@ namespace CryptoMonitor
         {
             InitializeComponent();
 
-            this.Left = SystemParameters.PrimaryScreenWidth - 15 - this.Width;
-            this.Top = SystemParameters.PrimaryScreenHeight - 60 - this.Height;
+            this.Left = SystemParameters.PrimaryScreenWidth - 10 - this.Width;
+            this.Top = SystemParameters.PrimaryScreenHeight - 55 - this.Height;
 
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
