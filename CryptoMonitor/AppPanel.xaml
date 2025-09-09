@@ -5,26 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptoMonitor"
         mc:Ignorable="d"
-        Title="BTC monitor" Height="120" Width="180" Loaded="Window_Loaded" ResizeMode="NoResize" Topmost="True" Cursor="ScrollS" MouseUp="Window_MouseUp" WindowStyle="None" Background="{x:Null}" AllowsTransparency="True" >
-    <Border CornerRadius="15" Background="#404040">
+        Title="BTC monitor" Height="100" Width="200" Loaded="Window_Loaded" ResizeMode="NoResize" Topmost="True" 
+        Cursor="ScrollS" MouseUp="Window_MouseUp" WindowStyle="None" Background="{x:Null}" AllowsTransparency="True" >
+    <Border Style="{StaticResource AppBorder}">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="30"/>
                 <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="36" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Image Grid.Row="0" Grid.Column="0" Source="Image/logo.png" Height="24" Width="24" Margin="10 5 5 5" />
-            <Label Grid.Row="0" Grid.Column="1" x:Name="lblPrice" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="20" />
-            <Button Grid.Row="0" Grid.Column="2" Click="Close_Click" Background="Transparent" Cursor="Hand" BorderThickness="0" ToolTip="Ukončit" Margin="5 5 10 5">
-                <Image  Source="Image/close.png" Height="24" Width="24"  />
+            <Image Grid.Row="0" Grid.Column="0" Source="Image/btc.png" Margin="3" />
+            <Label Grid.Row="0" Grid.Column="1" x:Name="lblBtc" Style="{StaticResource PriceLabel}" />
+            <Image Grid.Row="0" Grid.Column="2" x:Name="imgBtc" Style="{StaticResource ChartImage}" />
+            <Button Grid.Row="0" Grid.Column="3" Click="Close_Click" ToolTip="Ukončit" Style="{StaticResource ImageButton}">
+                <Image  Source="Image/close.png" />
             </Button>
 
-            <Image Grid.Row="1" Grid.ColumnSpan="3" x:Name="imgChart" Margin="10" Stretch="UniformToFill"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <Image Grid.Row="1" Grid.Column="0" Source="Image/eth.png" Margin="3" />
+            <Label Grid.Row="1" Grid.Column="1" x:Name="lblEth" Style="{StaticResource PriceLabel}" />
+            <Image Grid.Row="1" Grid.Column="2" x:Name="imgEth" Style="{StaticResource ChartImage}" />
+            
         </Grid>
     </Border>
 </Window>

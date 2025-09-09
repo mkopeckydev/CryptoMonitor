@@ -1,21 +1,30 @@
 ﻿using Binance.Net.Clients;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CryptoMonitor.Data
 {
     public class BinanceApi
     {
-        public async static Task<int> GetBtcPrice()
-        {
-            var restClient = new BinanceRestClient();
-            var tickerResult = await restClient.SpotApi.ExchangeData.GetTickerAsync("BTCUSDT");
-            var lastPrice = Convert.ToInt32(tickerResult.Data.LastPrice);
+        private const string BTCUSDT = "BTCUSDT";
+        private const string ETHUSDT = "ETHUSDT";
 
-            return lastPrice;
+        public async static Task<Price> GetPrice()
+        {
+            var price = new Price();
+
+            var restClient = new BinanceRestClient();
+
+            var tickerResults = await restClient.SpotApi.ExchangeData.GetTickersAsync(new string[] { BTCUSDT, ETHUSDT });
+
+            if (tickerResults != null)
+            {
+                var p = tickerResults.Data.FirstOrDefault(x => x.Symbol.Equals(BTCUSDT));
+                price.Btc = p.LastPrice;
+
+                p = tickerResults.Data.FirstOrDefault(x => x.Symbol.Equals(ETHUSDT));
+                price.Eth = p.LastPrice;
+            }
+
+            return price;
         }
     }
 }

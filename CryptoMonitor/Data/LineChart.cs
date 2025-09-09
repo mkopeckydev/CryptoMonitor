@@ -10,21 +10,21 @@ namespace CryptoMonitor.Data
 {
     public class LineChart
     {
-        private const int SizeX = 180;
-        private const int SizeY = 72;
+        private const int SizeX = 60;
+        private const int SizeY = 60;
         private const int BorderY = 1;
 
-        public static MemoryStream GenerateImageIntoMemoryStream(List<int> data)
+        public static MemoryStream GenerateImageIntoMemoryStream(List<decimal> data)
         {
             Bitmap bmp = new Bitmap(SizeX, SizeY);
             Graphics g = Graphics.FromImage(bmp);
 
-            Pen penGreen = new Pen(Color.LightGreen, 1);
+            Pen penGreen = new Pen(Color.LightGreen);
 
             decimal maxValue = 0;
             decimal minValue = 999999;
 
-            foreach (int d in data)
+            foreach (decimal d in data)
             {
                 if (d > maxValue) maxValue = d;
                 if (d < minValue) minValue = d;
@@ -33,12 +33,12 @@ namespace CryptoMonitor.Data
             decimal heightCoef = 1;
             if ((maxValue - minValue) > 0)
             {
-                heightCoef = (SizeY - (2 * BorderY)) / Convert.ToDecimal(maxValue - minValue);
+                heightCoef = (SizeY - (2 * BorderY)) / (maxValue - minValue);
             }
-            int prevValue = 0;
+            decimal prevValue = 0;
             int index = 0;
 
-            foreach (int value in data)
+            foreach (decimal value in data)
             {
                 index++;
 
